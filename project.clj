@@ -9,12 +9,12 @@
                  [environ "1.0.1"]
                  [compojure "1.4.0"]
                  [ring "1.4.0"]
-                 [reagent "0.5.1"]
+                 [reagent "0.5.1" :exclusions [cljsjs/react]] ;使用CDN加载React依赖。
                  [secretary "1.2.3"]]
   :plugins [[lein-figwheel "0.5.0-1"]
             [lein-ring "0.9.7"]
             [lein-garden "0.2.6"]
-            [lein-cljsbuild "1.0.6"]
+            [lein-cljsbuild "1.1.1"]
             [lein-bower "0.5.1"]
             [lein-environ "1.0.1"]
             [lein-externs "0.1.5"]]
@@ -42,8 +42,8 @@
                                    :source-map-timestamp true}}
                        {:id "prod"
                         :source-paths ["src/cljs" "env/prod/cljs"]
-                        :compiler {:output-to "resources/public/js/compiled/triple.js"
-                                   :main triple.prod
+                        :compiler {:main triple.prod
+                                   :output-to "resources/public/js/compiled/triple.js"
                                    :optimizations :advanced
                                    :pretty-print false}}]}
   :profiles {:dev {:source-paths ["env/dev/clj"]
